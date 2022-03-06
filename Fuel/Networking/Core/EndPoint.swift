@@ -97,7 +97,7 @@ extension Endpoint {
         request.addValue(currentLanguage, forHTTPHeaderField: "lang")
         request.addValue("ios", forHTTPHeaderField: "X-APP-OS")
 //        request.addValue("\(Bundle.main.buildNumber!)", forHTTPHeaderField: "X-APP-VERSION")
-        request.httpMethod = HTTPMethod.patch.rawValue
+        request.httpMethod = HTTPMethod.put.rawValue
         let defaults = UserDefaults.standard
         guard let token = defaults.string(forKey: "access_token") else {
             return request

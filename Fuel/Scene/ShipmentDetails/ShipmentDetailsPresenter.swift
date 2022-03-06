@@ -11,6 +11,7 @@ protocol ShipmentDetailsDelegate: NSObjectProtocol {
     func startLoading()
     func stopLoading()
     func didRecevidShimentResponse(_ shipmentRespons: ShipmentResponse)
+    func acceptedData(_ data: ChangeShipmentHolderResponse)
     func didReceivedError(_ message: String)
 }
 
@@ -37,6 +38,33 @@ class ShipmentDetailsPresenter {
             case .success(let data):
                 
                 self?.shipmenDetailstView?.didRecevidShimentResponse(data)
+                self?.shipmenDetailstView?.stopLoading()
+                
+            case .failure(let error):
+                var messageToShow = ""
+                switch error {
+                case .backend(let backendError):
+                    messageToShow = backendError.message!
+                case .network(let message):
+                    messageToShow = message
+                case .parsing(let errorDesc, let statusCode):
+                    messageToShow = "Reciverd Error"
+                    print("status Code \(statusCode)")
+                    print("Error Dec \(errorDesc)")
+                }
+                self?.shipmenDetailstView?.stopLoading()
+                self?.shipmenDetailstView?.didReceivedError(messageToShow)
+            }
+        }
+    }
+    
+    func acceptShipment(shipmentID: String) {
+        self.shipmenDetailstView?.startLoading()
+        self.shipmentDetailsClient.acceptShipment(shipmentID: shipmentID) { [weak self] result in
+            switch result {
+            case .success(let data):
+                
+                self?.shipmenDetailstView?.acceptedData(data)
                 self?.shipmenDetailstView?.stopLoading()
                 
             case .failure(let error):

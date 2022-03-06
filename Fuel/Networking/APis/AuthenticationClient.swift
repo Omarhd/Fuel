@@ -21,7 +21,7 @@ class AuthenticationClient: APIClient {
                      password: String,
                      completion: @escaping (Result<LoginResponse, DataLayerError<ErrorModel>>) -> Void) {
         let parameters = LoginRequest(nationalNumber: nationalNumber, password: password)
-        guard let request = AuthenticationFeed.adminLogin.postRequest(parameters: parameters, headers: [HTTPHeader.contentType("application/json")]) else { return }
+        guard let request = AuthenticationFeed.UsersLogin.postRequest(parameters: parameters, headers: [HTTPHeader.contentType("application/json")]) else { return }
         print("REquest \(request)")
         print("Parameters \(parameters)")
         

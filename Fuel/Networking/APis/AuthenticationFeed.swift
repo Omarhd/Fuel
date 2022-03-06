@@ -6,18 +6,18 @@
 
 import Foundation
 enum AuthenticationFeed {
-    case adminLogin
+    case UsersLogin
 }
 
 extension AuthenticationFeed: Endpoint {
     var base: String {
-        return BuildSettingsKey.BaseURL.value
+        return "https://28d5-102-181-47-39.ngrok.io"
     }
     
     var path: String {
         switch self {
-        case .adminLogin:
-            return "http://127.0.0.1:8000/users/login"
+        case .UsersLogin:
+            return "/users/login"
         }
     }
 }

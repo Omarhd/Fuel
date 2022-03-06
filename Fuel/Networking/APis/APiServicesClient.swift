@@ -68,6 +68,8 @@ class APiServicesClient: APIClient {
     }
     
     
+    
+    
 //    func createUser(firstNAme: String,
 //                    lastName: String,
 //                    email: String,
@@ -93,30 +95,24 @@ class APiServicesClient: APIClient {
 //        }, completion: completion)
 //    }
 //    
-//    func editUser(firstNAme: String,
-//                    lastName: String,
-//                    email: String,
-//                    password: String,
-//                    phone: String,
-//                    nationalID: String,
-//                    userType: String,
-//                    completion: @escaping (Result<CreateUserResponse, DataLayerError<ErrorModel>>) -> Void) {
-//       
-//        let adminID = UserDefaults.standard.hasID
-//        let token = UserDefaults.standard.hasToken
-//        
-//        let parameters = CreateUserRequest(firstName: firstNAme, lastName: lastName, email: email, password: password, phoneNumber: phone, nationalNumber: nationalID, createdBy: adminID, userType: userType)
-//                
-//        guard let request = ServicesFeed.updateUser.putRequest(parameters: parameters, headers: [HTTPHeader.contentType("application/json"),
-//                                                                                                     HTTPHeader.Authorization(token)]) else { return }
-//        print("REquest \(request)")
-//        print("Parameters \(parameters)")
-//        
-//        fetchHandler(with: request, decode: { (json) -> CreateUserResponse? in
-//            guard let result = json as? CreateUserResponse else {return nil}
-//            return result
-//        }, completion: completion)
-//    }
+    func acceptShipment(shipmentID: String,
+                        completion: @escaping (Result<ChangeShipmentHolderResponse, DataLayerError<ErrorModel>>) -> Void) {
+       
+        let userID = UserDefaults.standard.hasID
+        let token = UserDefaults.standard.hasToken
+        
+        let parameters = ChangeShipmentHolder(shipmentID: shipmentID, userID: userID)
+                
+        guard let request = ServicesFeed.updateUser.patchRequest(parameters: parameters, headers: [HTTPHeader.contentType("application/json"),
+                                                                                                     HTTPHeader.Authorization(token)]) else { return }
+        print("REquest \(request)")
+        print("Parameters \(parameters)")
+        
+        fetchHandler(with: request, decode: { (json) -> ChangeShipmentHolderResponse? in
+            guard let result = json as? ChangeShipmentHolderResponse else {return nil}
+            return result
+        }, completion: completion)
+    }
 //    
 //    func deleteUser(userID: String, completion: @escaping(Result<Bool, DataLayerError<ErrorModel>>) -> Void)  {
 //

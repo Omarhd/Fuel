@@ -31,6 +31,14 @@ class ShipmentQRCodeViewController: UIViewController {
        
     }
     
+    @IBAction func acceptClicked(_ sender: Any) {
+        self.shipmentDetailsPresnter.acceptShipment(shipmentID: shipmentData!.id)
+    }
+    
+    @IBAction func refuseClicked(_ sender: Any) {
+    }
+    
+    
     fileprivate func SetUPShipmentUI(with shipmentData: ShipmentResponse) {
       
         shipmentQuantity.text = String(describing: shipmentData.quantity)
@@ -41,6 +49,13 @@ class ShipmentQRCodeViewController: UIViewController {
 }
 
 extension ShipmentQRCodeViewController: ShipmentDetailsDelegate {
+   
+    func acceptedData(_ data: ChangeShipmentHolderResponse) {
+        if data != nil {
+            showMessage(title: "Shipment Accepted", body: "success", type: .success, icon: .light)
+        }
+    }
+    
     func startLoading() {
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()

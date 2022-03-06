@@ -8,8 +8,8 @@
 import Foundation
 
 enum ServicesFeed {
-    case createShipments
-    case getAllShipments
+    case acceptShipment
+    case refuseShipment
     case getLastShipment(String)
     case createUsers
     case updateUser
@@ -20,15 +20,15 @@ enum ServicesFeed {
 
 extension ServicesFeed: Endpoint {
     var base: String {
-        return BuildSettingsKey.BaseURL.value
+        return "https://28d5-102-181-47-39.ngrok.io"
     }
     
     var path: String {
         switch self {
-        case .createShipments:
-            return "http://127.0.0.1:8000/shipments/shipment"
-        case .getAllShipments: return "http://127.0.0.1:8000/shipments/shipments"
-        case .getLastShipment(let shipmentID): return "http://127.0.0.1:8000/shipments/shipment/\(shipmentID)"
+        case .acceptShipment:
+            return base + "/shipments/shipment/holder"
+        case .refuseShipment: return base + "/shipments/shipments"
+        case .getLastShipment(let shipmentID): return base + "/shipments/shipment/\(shipmentID)"
         case .createUsers: return "http://127.0.0.1:8000/users/user"
         case .updateUser: return "http://127.0.0.1:8000/users/user"
         case .deleteUser(let userID): return "http://127.0.0.1:8000/users/user/\(userID)"

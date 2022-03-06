@@ -36,3 +36,30 @@ struct ShipmentResponse: Codable {
         case currentHolder = "current_holder"
     }
 }
+
+// MARK: - ChangeShipmentHolder
+struct ChangeShipmentHolder: Codable {
+    let shipmentID, userID: String
+
+    enum CodingKeys: String, CodingKey {
+        case shipmentID = "shipment_id"
+        case userID = "user_id"
+    }
+}
+
+// MARK: - ChangeShipmentHolderResponse
+struct ChangeShipmentHolderResponse: Codable {
+    let id: String
+    let shipmentNumber: Int
+    let status, qr: String
+    let quantity: Int
+    let createdAt, updatedAt, adminID, currentHolder: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case shipmentNumber = "shipment_number"
+        case status, qr, quantity, createdAt, updatedAt
+        case adminID = "admin_id"
+        case currentHolder = "current_holder"
+    }
+}
