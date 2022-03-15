@@ -10,6 +10,7 @@ target 'Fuel' do
   pod 'ProgressHUD'
   pod 'IQKeyboardManagerSwift'
   pod 'SwiftMessages'
+  pod 'Alamofire', '~> 5.5'
 
   target 'FuelTests' do
     inherit! :search_paths

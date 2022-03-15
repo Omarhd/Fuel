@@ -9,10 +9,19 @@
 /* Begin PBXBuildFile section */
 		23CCC0C91F284118FAEAB9E4 /* Pods_FuelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7412D207CD4C91C0007E92 /* Pods_FuelTests.framework */; };
 		4C0ACA3027D0A666007DCB51 /* ScannerOverlay in Frameworks */ = {isa = PBXBuildFile; productRef = 4C0ACA2F27D0A666007DCB51 /* ScannerOverlay */; };
-		4C6A559527CFE47000EC36E7 /* ShipmentDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A559327CFE46F00EC36E7 /* ShipmentDetailsPresenter.swift */; };
+		4C139B0027DB695F00B6B94A /* ShipmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C139AFE27DB695E00B6B94A /* ShipmentDetailsViewController.swift */; };
+		4C139B0127DB695F00B6B94A /* ShipmentDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C139AFF27DB695F00B6B94A /* ShipmentDetailsPresenter.swift */; };
+		4C28489127DDFF9300407429 /* ShipmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28488E27DDFF9200407429 /* ShipmentTableViewCell.swift */; };
+		4C28489227DDFF9300407429 /* AllShipmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28488F27DDFF9300407429 /* AllShipmentsViewController.swift */; };
+		4C28489327DDFF9300407429 /* AllShipmentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28489027DDFF9300407429 /* AllShipmentsPresenter.swift */; };
+		4C28492327DF4F9600407429 /* RetailShipmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28492227DF4F9500407429 /* RetailShipmentViewController.swift */; };
+		4C28492527DF4FB000407429 /* RetailShipmentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28492427DF4FB000407429 /* RetailShipmentPresenter.swift */; };
+		4C28492727E0D20F00407429 /* RetaildShipmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28492627E0D20A00407429 /* RetaildShipmentTableViewCell.swift */; };
+		4C6A559527CFE47000EC36E7 /* ShipmentOperationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A559327CFE46F00EC36E7 /* ShipmentOperationPresenter.swift */; };
 		4C6A559627CFE47000EC36E7 /* ShipmentQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A559427CFE46F00EC36E7 /* ShipmentQRCodeViewController.swift */; };
 		4C6A559827CFE48600EC36E7 /* ShipmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A559727CFE48600EC36E7 /* ShipmentModel.swift */; };
 		4C6B66CD27D38F4C00E23343 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B66CC27D38F4C00E23343 /* URL.swift */; };
+		4C6B66CF27D4D90100E23343 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B66CE27D4D90000E23343 /* SettingsTableViewController.swift */; };
 		4CC20FCE27CFAB8B00DE15DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC20FCD27CFAB8B00DE15DB /* AppDelegate.swift */; };
 		4CC20FD027CFAB8B00DE15DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC20FCF27CFAB8B00DE15DB /* SceneDelegate.swift */; };
 		4CC20FD527CFAB8B00DE15DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC20FD327CFAB8B00DE15DB /* Main.storyboard */; };
@@ -72,10 +81,19 @@
 		1EF84E2FB6D3F131777F13F1 /* Pods_Fuel_FuelUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fuel_FuelUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F7412D207CD4C91C0007E92 /* Pods_FuelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A3A55649E4E17910F6C6065 /* Pods-Fuel-FuelUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fuel-FuelUITests.debug.xcconfig"; path = "Target Support Files/Pods-Fuel-FuelUITests/Pods-Fuel-FuelUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4C6A559327CFE46F00EC36E7 /* ShipmentDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipmentDetailsPresenter.swift; sourceTree = "<group>"; };
+		4C139AFE27DB695E00B6B94A /* ShipmentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipmentDetailsViewController.swift; sourceTree = "<group>"; };
+		4C139AFF27DB695F00B6B94A /* ShipmentDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipmentDetailsPresenter.swift; sourceTree = "<group>"; };
+		4C28488E27DDFF9200407429 /* ShipmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipmentTableViewCell.swift; sourceTree = "<group>"; };
+		4C28488F27DDFF9300407429 /* AllShipmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllShipmentsViewController.swift; sourceTree = "<group>"; };
+		4C28489027DDFF9300407429 /* AllShipmentsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllShipmentsPresenter.swift; sourceTree = "<group>"; };
+		4C28492227DF4F9500407429 /* RetailShipmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetailShipmentViewController.swift; sourceTree = "<group>"; };
+		4C28492427DF4FB000407429 /* RetailShipmentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetailShipmentPresenter.swift; sourceTree = "<group>"; };
+		4C28492627E0D20A00407429 /* RetaildShipmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetaildShipmentTableViewCell.swift; sourceTree = "<group>"; };
+		4C6A559327CFE46F00EC36E7 /* ShipmentOperationPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipmentOperationPresenter.swift; sourceTree = "<group>"; };
 		4C6A559427CFE46F00EC36E7 /* ShipmentQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipmentQRCodeViewController.swift; sourceTree = "<group>"; };
 		4C6A559727CFE48600EC36E7 /* ShipmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipmentModel.swift; sourceTree = "<group>"; };
 		4C6B66CC27D38F4C00E23343 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		4C6B66CE27D4D90000E23343 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		4CC20FCA27CFAB8B00DE15DB /* Fuel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fuel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC20FCD27CFAB8B00DE15DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CC20FCF27CFAB8B00DE15DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,14 +178,51 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		4C6A559227CFE44800EC36E7 /* ShipmentDetails */ = {
+		4C139AFD27DB694900B6B94A /* ShipmentDetails */ = {
+			isa = PBXGroup;
+			children = (
+				4C139AFE27DB695E00B6B94A /* ShipmentDetailsViewController.swift */,
+				4C139AFF27DB695F00B6B94A /* ShipmentDetailsPresenter.swift */,
+			);
+			path = ShipmentDetails;
+			sourceTree = "<group>";
+		};
+		4C28488D27DDFF7F00407429 /* My Shipments */ = {
+			isa = PBXGroup;
+			children = (
+				4C28488F27DDFF9300407429 /* AllShipmentsViewController.swift */,
+				4C28489027DDFF9300407429 /* AllShipmentsPresenter.swift */,
+				4C28488E27DDFF9200407429 /* ShipmentTableViewCell.swift */,
+				4C28492627E0D20A00407429 /* RetaildShipmentTableViewCell.swift */,
+			);
+			path = "My Shipments";
+			sourceTree = "<group>";
+		};
+		4C28492127DF4F6000407429 /* Retail Shipments */ = {
+			isa = PBXGroup;
+			children = (
+				4C28492227DF4F9500407429 /* RetailShipmentViewController.swift */,
+				4C28492427DF4FB000407429 /* RetailShipmentPresenter.swift */,
+			);
+			path = "Retail Shipments";
+			sourceTree = "<group>";
+		};
+		4C6A559227CFE44800EC36E7 /* ShipmentOperations */ = {
 			isa = PBXGroup;
 			children = (
 				4C6A559427CFE46F00EC36E7 /* ShipmentQRCodeViewController.swift */,
-				4C6A559327CFE46F00EC36E7 /* ShipmentDetailsPresenter.swift */,
+				4C6A559327CFE46F00EC36E7 /* ShipmentOperationPresenter.swift */,
 				4C6A559727CFE48600EC36E7 /* ShipmentModel.swift */,
 			);
-			path = ShipmentDetails;
+			path = ShipmentOperations;
+			sourceTree = "<group>";
+		};
+		4C6B66D027D4D95100E23343 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4C6B66CE27D4D90000E23343 /* SettingsTableViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		4CC20FC127CFAB8A00DE15DB = {
@@ -319,7 +374,11 @@
 		4CC2102F27CFB18900DE15DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				4C6A559227CFE44800EC36E7 /* ShipmentDetails */,
+				4C28492127DF4F6000407429 /* Retail Shipments */,
+				4C28488D27DDFF7F00407429 /* My Shipments */,
+				4C139AFD27DB694900B6B94A /* ShipmentDetails */,
+				4C6B66D027D4D95100E23343 /* Settings */,
+				4C6A559227CFE44800EC36E7 /* ShipmentOperations */,
 				4CC2103727CFB65500DE15DB /* Main */,
 				4CC2103627CFB1F300DE15DB /* Auth */,
 			);
@@ -602,6 +661,8 @@
 				4CC2102A27CFB0B800DE15DB /* HTTPHeader.swift in Sources */,
 				4CC2101127CFB03B00DE15DB /* UIViewController+Extension.swift in Sources */,
 				4CC2102B27CFB0B800DE15DB /* Result.swift in Sources */,
+				4C139B0027DB695F00B6B94A /* ShipmentDetailsViewController.swift in Sources */,
+				4C28489227DDFF9300407429 /* AllShipmentsViewController.swift in Sources */,
 				4CC2102C27CFB0B800DE15DB /* APIClient.swift in Sources */,
 				4CC2100827CFAFFA00DE15DB /* Utility.swift in Sources */,
 				4C6B66CD27D38F4C00E23343 /* URL.swift in Sources */,
@@ -609,26 +670,33 @@
 				4CC2102927CFB0B800DE15DB /* APIError.swift in Sources */,
 				4CC2100927CFAFFA00DE15DB /* AppManager.swift in Sources */,
 				4CC2103927CFB68400DE15DB /* ScanerViewController.swift in Sources */,
+				4C28489127DDFF9300407429 /* ShipmentTableViewCell.swift in Sources */,
 				4CC2102227CFB0A500DE15DB /* AuthenticationClient.swift in Sources */,
 				4C6A559627CFE47000EC36E7 /* ShipmentQRCodeViewController.swift in Sources */,
 				4CC20FD827CFAB8B00DE15DB /* Fuel.xcdatamodeld in Sources */,
+				4C28492327DF4F9600407429 /* RetailShipmentViewController.swift in Sources */,
 				4CC2103527CFB1E100DE15DB /* LoginModel.swift in Sources */,
 				4CC20FCE27CFAB8B00DE15DB /* AppDelegate.swift in Sources */,
 				4CC2101F27CFB0A500DE15DB /* AuthenticationFeed.swift in Sources */,
 				4CC2102D27CFB0B800DE15DB /* EndPoint.swift in Sources */,
+				4C6B66CF27D4D90100E23343 /* SettingsTableViewController.swift in Sources */,
 				4CC2102027CFB0A500DE15DB /* APiServicesClient.swift in Sources */,
+				4C28489327DDFF9300407429 /* AllShipmentsPresenter.swift in Sources */,
 				4CC2102E27CFB0B800DE15DB /* HTTPMethod.swift in Sources */,
 				4CC2101A27CFB09700DE15DB /* Configuration.swift in Sources */,
 				4C6A559827CFE48600EC36E7 /* ShipmentModel.swift in Sources */,
+				4C139B0127DB695F00B6B94A /* ShipmentDetailsPresenter.swift in Sources */,
 				4CC2103427CFB1E100DE15DB /* AuthPresenter.swift in Sources */,
+				4C28492727E0D20F00407429 /* RetaildShipmentTableViewCell.swift in Sources */,
 				4CC2103327CFB1E100DE15DB /* AuthViewController.swift in Sources */,
 				4CC2102127CFB0A500DE15DB /* APiServicesFeed.swift in Sources */,
 				4CC2101227CFB03B00DE15DB /* UIViews+Extensions.swift in Sources */,
 				4CC2100B27CFB02400DE15DB /* CardView.swift in Sources */,
 				4CC2101327CFB03B00DE15DB /* UserDefaults+Extension.swift in Sources */,
 				4CC2101527CFB05000DE15DB /* Custom Messgaes.swift in Sources */,
+				4C28492527DF4FB000407429 /* RetailShipmentPresenter.swift in Sources */,
 				4CC20FD027CFAB8B00DE15DB /* SceneDelegate.swift in Sources */,
-				4C6A559527CFE47000EC36E7 /* ShipmentDetailsPresenter.swift in Sources */,
+				4C6A559527CFE47000EC36E7 /* ShipmentOperationPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

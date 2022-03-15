@@ -13,7 +13,7 @@ class ScanerViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
 
     @IBOutlet weak var scanerView: UIView!
     var video = AVCaptureVideoPreviewLayer()
-    
+    let session = AVCaptureSession()
     
     
     override func viewDidLoad() {
@@ -22,9 +22,7 @@ class ScanerViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         SetUPScanner()
     }
     
-    
     fileprivate func SetUPScanner() {
-        let session = AVCaptureSession()
         let captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice!)
@@ -75,6 +73,9 @@ extension ScanerViewController {
 
                         self.navigationController?.modalPresentationStyle = .popover
                         self.navigationController?.pushViewController(shipmentDetails, animated: true)
+                        
+//                        self.session.stopRunning()
+
 
                     }
                     

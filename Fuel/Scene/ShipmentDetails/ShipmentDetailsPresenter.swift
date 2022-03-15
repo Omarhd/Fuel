@@ -7,38 +7,37 @@
 
 import Foundation
 
-protocol ShipmentDetailsDelegate: NSObjectProtocol {
+protocol ShipmentQrDetailsDelegate: NSObjectProtocol {
     func startLoading()
     func stopLoading()
     func didRecevidShimentResponse(_ shipmentRespons: ShipmentResponse)
-    func acceptedData(_ data: ChangeShipmentHolderResponse)
     func didReceivedError(_ message: String)
 }
 
-class ShipmentDetailsPresenter {
-    fileprivate let shipmentDetailsClient: APiServicesClient
-    weak fileprivate var shipmenDetailstView: ShipmentDetailsDelegate?
+class ShipmentQrDetailsPresenter {
+    fileprivate let shipmentQrDetailsClient: APiServicesClient
+    weak fileprivate var shipmenQrDetailstView: ShipmentQrDetailsDelegate?
     
-    init(shipmentDetailsClient: APiServicesClient) {
-        self.shipmentDetailsClient = shipmentDetailsClient
+    init(shipmentQrDetailsClient: APiServicesClient) {
+        self.shipmentQrDetailsClient = shipmentQrDetailsClient
     }
     
-    func attachView(_ view: ShipmentDetailsDelegate) {
-        self.shipmenDetailstView = view
+    func attachView(_ view: ShipmentQrDetailsDelegate) {
+        self.shipmenQrDetailstView = view
     }
     
     func detachView() {
-        self.shipmenDetailstView = nil
+        self.shipmenQrDetailstView = nil
     }
     
     func getShipment(shipmentID: String) {
-        self.shipmenDetailstView?.startLoading()
-        self.shipmentDetailsClient.getLastShipment(shipmentID: shipmentID) { [weak self] result in
+//        self.shipmenDetailstView?.startLoading()
+        self.shipmentQrDetailsClient.getLastShipment(shipmentID: shipmentID) { [weak self] result in
             switch result {
             case .success(let data):
                 
-                self?.shipmenDetailstView?.didRecevidShimentResponse(data)
-                self?.shipmenDetailstView?.stopLoading()
+                self?.shipmenQrDetailstView?.didRecevidShimentResponse(data)
+                self?.shipmenQrDetailstView?.stopLoading()
                 
             case .failure(let error):
                 var messageToShow = ""
@@ -52,37 +51,9 @@ class ShipmentDetailsPresenter {
                     print("status Code \(statusCode)")
                     print("Error Dec \(errorDesc)")
                 }
-                self?.shipmenDetailstView?.stopLoading()
-                self?.shipmenDetailstView?.didReceivedError(messageToShow)
+                self?.shipmenQrDetailstView?.stopLoading()
+                self?.shipmenQrDetailstView?.didReceivedError(messageToShow)
             }
         }
     }
-    
-    func acceptShipment(shipmentID: String) {
-        self.shipmenDetailstView?.startLoading()
-        self.shipmentDetailsClient.acceptShipment(shipmentID: shipmentID) { [weak self] result in
-            switch result {
-            case .success(let data):
-                
-                self?.shipmenDetailstView?.acceptedData(data)
-                self?.shipmenDetailstView?.stopLoading()
-                
-            case .failure(let error):
-                var messageToShow = ""
-                switch error {
-                case .backend(let backendError):
-                    messageToShow = backendError.message!
-                case .network(let message):
-                    messageToShow = message
-                case .parsing(let errorDesc, let statusCode):
-                    messageToShow = "Reciverd Error"
-                    print("status Code \(statusCode)")
-                    print("Error Dec \(errorDesc)")
-                }
-                self?.shipmenDetailstView?.stopLoading()
-                self?.shipmenDetailstView?.didReceivedError(messageToShow)
-            }
-        }
-    }
-    
 }

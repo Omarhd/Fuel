@@ -47,6 +47,17 @@ struct ChangeShipmentHolder: Codable {
     }
 }
 
+// MARK: - ChangeShipmentHolder
+struct RefuseShipmentRequest: Codable {
+    let shipmentID: String
+    let userID: String
+
+    enum CodingKeys: String, CodingKey {
+        case shipmentID = "shipment_id"
+        case userID = "user_id"
+    }
+}
+
 // MARK: - ChangeShipmentHolderResponse
 struct ChangeShipmentHolderResponse: Codable {
     let id: String
@@ -61,5 +72,45 @@ struct ChangeShipmentHolderResponse: Codable {
         case status, qr, quantity, createdAt, updatedAt
         case adminID = "admin_id"
         case currentHolder = "current_holder"
+    }
+}
+
+enum ShipmentsStatus: String, CaseIterable {
+   
+    case REFUSED = "refused"
+    case NEW = "new"
+    case RECIVED = "recived"
+    case SOLD = "sold"
+    case RETAILED = "retailed"
+}
+
+
+// MARK: - AgentModel
+struct AgentModel: Codable {
+    let id, firstName, lastName, email: String
+    let password, phoneNumber, nationalNumber, type: String
+    let createdAt, updatedAt, createdBy: String
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case email, password
+        case phoneNumber = "phone_number"
+        case nationalNumber = "national_number"
+        case type, createdAt, updatedAt
+        case createdBy = "created_by"
+    }
+}
+
+// MARK: - RetailsShipmentResponse
+struct RetailsShipmentResponse: Codable {
+    let shipmentID, agentID, id, updatedAt: String
+    let createdAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case shipmentID = "shipment_id"
+        case agentID = "agent_id"
+        case id, updatedAt, createdAt
     }
 }

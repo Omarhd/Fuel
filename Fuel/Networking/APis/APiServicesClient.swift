@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class APiServicesClient: APIClient {
     
@@ -39,26 +40,23 @@ class APiServicesClient: APIClient {
 //        }, completion: completion)
 //    }
 //    
-//    func getAllShipments(completion: @escaping (Result<[ShipmentResponse], DataLayerError<ErrorModel>>) -> Void) {
-//               
-//        let token = UserDefaults.standard.hasToken
-//        
-//        guard let request = ServicesFeed.getAllShipments.getRequest(parameters: ["":""], headers: [HTTPHeader.contentType("application/json"),
-//                                                                                                     HTTPHeader.Authorization(token)]) else { return }
-//        print("REquest \(request)")
-//        
-//        fetchHandler(with: request, decode: { (json) -> [ShipmentResponse]? in
-//            guard let result = json as? [ShipmentResponse] else {return nil}
-//            return result
-//        }, completion: completion)
-//    }
+    func getAllShipments(myID: String, completion: @escaping (Result<[ShipmentResponse], DataLayerError<ErrorModel>>) -> Void) {
+               
+        let token = UserDefaults.standard.hasToken
+        
+        guard let request = ServicesFeed.getMyShipments(myID).getRequest(parameters: ["":""], headers: [HTTPHeader.contentType("application/json"),
+                                                                                                     HTTPHeader.Authorization(token)]) else { return }
+        print("REquest \(request)")
+        
+        fetchHandler(with: request, decode: { (json) -> [ShipmentResponse]? in
+            guard let result = json as? [ShipmentResponse] else {return nil}
+            return result
+        }, completion: completion)
+    }
 //    
     func getLastShipment(shipmentID: String, completion: @escaping (Result<ShipmentResponse, DataLayerError<ErrorModel>>) -> Void) {
-               
 //        let token = UserDefaults.standard.hasToken
-        
-        guard let request = ServicesFeed.getLastShipment(shipmentID).getRequest(parameters: ["":""], headers: [HTTPHeader.contentType("application/json"),
-                                                                                                     HTTPHeader.Authorization("token")]) else { return }
+        guard let request = ServicesFeed.getLastShipment(shipmentID).getRequest(parameters: ["":""], headers: [HTTPHeader.contentType("application/json"),HTTPHeader.Authorization("token")]) else { return }
         print("REquest \(request)")
         
         fetchHandler(with: request, decode: { (json) -> ShipmentResponse? in
@@ -67,6 +65,19 @@ class APiServicesClient: APIClient {
         }, completion: completion)
     }
     
+    func getAgentByID(agentID: String, completion: @escaping (Result<AgentModel, DataLayerError<ErrorModel>>) -> Void) {
+               
+//        let token = UserDefaults.standard.hasToken
+        
+        guard let request = ServicesFeed.getAgentByID(agentID).getRequest(parameters: ["":""], headers: [HTTPHeader.contentType("application/json"),
+                                                                                                     HTTPHeader.Authorization("token")]) else { return }
+        print("REquest \(request)")
+        
+        fetchHandler(with: request, decode: { (json) -> AgentModel? in
+            guard let result = json as? AgentModel else {return nil}
+            return result
+        }, completion: completion)
+    }
     
     
     
@@ -103,15 +114,90 @@ class APiServicesClient: APIClient {
         
         let parameters = ChangeShipmentHolder(shipmentID: shipmentID, userID: userID)
                 
-        guard let request = ServicesFeed.updateUser.patchRequest(parameters: parameters, headers: [HTTPHeader.contentType("application/json"),
-                                                                                                     HTTPHeader.Authorization(token)]) else { return }
+        let request = ServicesFeed.acceptShipment.patchRequest(parameters: parameters, headers: [HTTPHeader.contentType("application/json")])
         print("REquest \(request)")
         print("Parameters \(parameters)")
+        
+        fetchHandler(with: request!, decode: { (json) -> ChangeShipmentHolderResponse? in
+            guard let result = json as? ChangeShipmentHolderResponse else {return nil}
+            return result
+        }, completion: completion)
+    }
+    
+    func getAllRetaildShipments(completion: @escaping (Result<[RetailsShipmentResponse], DataLayerError<ErrorModel>>) -> Void) {
+               
+        let token = UserDefaults.standard.hasToken
+        
+        guard let request = ServicesFeed.getAllRetaildShipments.getRequest(parameters: ["":""], headers: [HTTPHeader.contentType("application/json"),
+                                                                                                     HTTPHeader.Authorization(token)]) else { return }
+        print("REquest \(request)")
+        
+        fetchHandler(with: request, decode: { (json) -> [RetailsShipmentResponse]? in
+            guard let result = json as? [RetailsShipmentResponse] else {return nil}
+            return result
+        }, completion: completion)
+    }
+    
+    func refuseShipment(shipmentID: String,
+                        completion: @escaping (Result<ChangeShipmentHolderResponse, DataLayerError<ErrorModel>>) -> Void) {
+       
+        let userID = UserDefaults.standard.hasID
+        let token = UserDefaults.standard.hasToken
+        
+        let param: [String:String] = ["shipment_id": shipmentID, "user_id": userID]
+        
+        let parameters = RefuseShipmentRequest(shipmentID: shipmentID, userID: userID)
+                
+        guard let request = ServicesFeed.refuseShipment.patchRequest(parameters: param, headers: [HTTPHeader.contentType("application/json")]) else { return }
+        print("REquest \(request)")
+        print("Parameters \(param)")
         
         fetchHandler(with: request, decode: { (json) -> ChangeShipmentHolderResponse? in
             guard let result = json as? ChangeShipmentHolderResponse else {return nil}
             return result
         }, completion: completion)
+    }
+    
+    func rejectShipment(shipmentID: String) {
+        
+        let params = ["shipment_id": shipmentID,"user_id": UserDefaults.standard.hasID]
+        
+        AF.request("http://192.168.8.100:8000/shipments/shipment/refuse",
+                   method: .patch,
+                   parameters: params,
+                   encoder: JSONParameterEncoder.default).response { response in
+//            debugPrint(response)
+            
+            let data = response.data
+           
+            switch response.result {
+                
+            case .success(_):
+                showMessage(title: "Shipment Rejected", body: "Successfully Rejected Shipment", type: .success, icon: .default)
+            case .failure(_):
+                showMessage(title: "Error", body: "Unkown Error", type: .error, icon: .default)
+            }
+        }
+    }
+    
+    func acceptShipment(endPoint: String, shipmentID: String) {
+        let params = ["shipment_id": shipmentID,"user_id": UserDefaults.standard.hasID]
+        AF.request(endPoint,
+                   method: .patch,
+                   parameters: params,
+                   encoder: JSONParameterEncoder.default).response { response in
+//            debugPrint(response)
+            
+            let data = response.data
+           
+            switch response.result {
+                
+            case .success(_):
+                showMessage(title: "Shipment Accepted", body: "Successfully Accepted Shipment", type: .success, icon: .default)
+            case .failure(_):
+                showMessage(title: "Error", body: "Unkown Error", type: .error, icon: .default)
+            }
+        }
     }
 //    
 //    func deleteUser(userID: String, completion: @escaping(Result<Bool, DataLayerError<ErrorModel>>) -> Void)  {

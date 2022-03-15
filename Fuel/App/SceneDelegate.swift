@@ -28,14 +28,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //            controller = OnBoardingViewController.instantiate()
 //        }
         
-//        if UserDefaults.standard.hasLogedIn {
-//            controller = storyBoard.instantiateViewController(withIdentifier: "TabController")
-//        } else {
-//            controller = storyBoard.instantiateViewController(withIdentifier: "AuthNavigation")
-//        }
-//
-//        window?.rootViewController = controller
-//        window?.makeKeyAndVisible()
+        if UserDefaults.standard.hasLogedIn {
+            controller = storyBoard.instantiateViewController(withIdentifier: "TabController")
+        } else {
+            controller = storyBoard.instantiateViewController(withIdentifier: "AuthNavigation")
+        }
+
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
