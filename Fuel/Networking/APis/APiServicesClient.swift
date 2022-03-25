@@ -79,7 +79,19 @@ class APiServicesClient: APIClient {
         }, completion: completion)
     }
     
-    
+    func getUserByID(UserID: String, completion: @escaping (Result<GetUserResponse, DataLayerError<ErrorModel>>) -> Void) {
+               
+        let token = UserDefaults.standard.hasToken
+        
+        guard let request = ServicesFeed.getAgentByID(UserID).getRequest(parameters: ["":""], headers: [HTTPHeader.contentType("application/json"),
+                                                                                                     HTTPHeader.Authorization(token)]) else { return }
+        print("REquest \(request)")
+        
+        fetchHandler(with: request, decode: { (json) -> GetUserResponse? in
+            guard let result = json as? GetUserResponse else {return nil}
+            return result
+        }, completion: completion)
+    }
     
 //    func createUser(firstNAme: String,
 //                    lastName: String,

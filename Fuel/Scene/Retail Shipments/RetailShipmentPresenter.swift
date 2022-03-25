@@ -40,10 +40,14 @@ class RetailShipmentPresenter {
             debugPrint(response)
             switch response.result {
             case .success(let data):
+                print(data)
                 let data = try? JSONDecoder().decode(RetailsShipmentResponse.self, from: data!)
-                self.retailShipmentView?.didRecevidShimentResponse(data!)
-                self.retailShipmentView?.stopLoading()
-                showMessage(title: "User Updated", body: "Successfully Updated Success.", type: .success, icon: .default)
+                DispatchQueue.main.async {
+                    self.retailShipmentView?.didRecevidShimentResponse(data!)
+                    self.retailShipmentView?.stopLoading()
+                    showMessage(title: "Shipment Retailed", body: "Successfully Updated Success.", type: .success, icon: .default)
+
+                }
             case .failure(_):
                 self.retailShipmentView?.stopLoading()
                 showMessage(title: "Error", body: "Unkown Error", type: .error, icon: .default)

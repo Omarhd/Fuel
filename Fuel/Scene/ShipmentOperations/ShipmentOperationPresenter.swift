@@ -127,7 +127,7 @@ class ShipmentDetailsPresenter {
             case .success(let data):
                 let refusedData = try? JSONDecoder().decode(ChangeShipmentHolderResponse.self, from: data!)
                 showMessage(title: "Shipment Accepted", body: "Successfully Accept Shipment", type: .success, icon: .default)
-                self.shipmenDetailstView?.refusedData(refusedData!)
+//                self.shipmenDetailstView?.refusedData(refusedData!)
             case .failure(_):
                 showMessage(title: "Error", body: "Unkown Error", type: .error, icon: .default)
             }
@@ -145,7 +145,7 @@ class ShipmentDetailsPresenter {
             case .success(let data):
                 let refusedData = try? JSONDecoder().decode(ChangeShipmentHolderResponse.self, from: data!)
                 showMessage(title: "Shipment Refused", body: "Successfully Refused Shipment", type: .success, icon: .default)
-                self.shipmenDetailstView?.refusedData(refusedData!)
+//                self.shipmenDetailstView?.refusedData(refusedData!)
             case .failure(_):
                 showMessage(title: "Error", body: "Unkown Error", type: .error, icon: .default)
             }

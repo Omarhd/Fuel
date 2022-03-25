@@ -43,6 +43,8 @@ class ShipmentQRCodeViewController: UIViewController {
 //        actionOnShipment(endPoint: "http://192.168.8.100:8000/shipments/shipment/holder", shipmentID: shipmentData!.id)
     }
     
+    @IBAction func infoClicked(_ sender: Any) {
+    }
     @IBAction func refuseClicked(_ sender: Any) {
         self.shipmentDetailsPresnter.refuseActionOnShipment(shipmentID: shipmentData!.id)
 //        actionOnShipment(endPoint: "http://192.168.8.100:8000/shipments/shipment/refuse", shipmentID: shipmentData!.id)

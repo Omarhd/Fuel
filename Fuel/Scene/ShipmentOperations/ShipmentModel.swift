@@ -27,7 +27,7 @@ struct ShipmentResponse: Codable {
     let quantity: Int
     let createdAt, updatedAt, adminID: String
     let currentHolder: String?
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case shipmentNumber = "shipment_number"
@@ -40,7 +40,7 @@ struct ShipmentResponse: Codable {
 // MARK: - ChangeShipmentHolder
 struct ChangeShipmentHolder: Codable {
     let shipmentID, userID: String
-
+    
     enum CodingKeys: String, CodingKey {
         case shipmentID = "shipment_id"
         case userID = "user_id"
@@ -51,7 +51,7 @@ struct ChangeShipmentHolder: Codable {
 struct RefuseShipmentRequest: Codable {
     let shipmentID: String
     let userID: String
-
+    
     enum CodingKeys: String, CodingKey {
         case shipmentID = "shipment_id"
         case userID = "user_id"
@@ -65,7 +65,7 @@ struct ChangeShipmentHolderResponse: Codable {
     let status, qr: String
     let quantity: Int
     let createdAt, updatedAt, adminID, currentHolder: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case shipmentNumber = "shipment_number"
@@ -76,7 +76,7 @@ struct ChangeShipmentHolderResponse: Codable {
 }
 
 enum ShipmentsStatus: String, CaseIterable {
-   
+    
     case REFUSED = "refused"
     case NEW = "new"
     case RECIVED = "recived"
@@ -90,7 +90,7 @@ struct AgentModel: Codable {
     let id, firstName, lastName, email: String
     let password, phoneNumber, nationalNumber, type: String
     let createdAt, updatedAt, createdBy: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id
         case firstName = "first_name"
@@ -105,12 +105,36 @@ struct AgentModel: Codable {
 
 // MARK: - RetailsShipmentResponse
 struct RetailsShipmentResponse: Codable {
-    let shipmentID, agentID, id, updatedAt: String
-    let createdAt: String
-
+    let quantity, retailShipmentNumber: Int
+    let status, agentID, shipmentID, id: String
+    let updatedAt, createdAt: String
+    
     enum CodingKeys: String, CodingKey {
-        case shipmentID = "shipment_id"
+        case quantity
+        case retailShipmentNumber = "retailShipment_number"
+        case status
         case agentID = "agent_id"
+        case shipmentID = "shipment_id"
         case id, updatedAt, createdAt
     }
 }
+
+
+// MARK: - GetUserResponse
+struct GetUserResponse: Codable {
+    let id, firstName, lastName, email: String
+    let password, phoneNumber, nationalNumber, type: String
+    let createdAt, updatedAt, createdBy: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case email, password
+        case phoneNumber = "phone_number"
+        case nationalNumber = "national_number"
+        case type, createdAt, updatedAt
+        case createdBy = "created_by"
+    }
+}
+

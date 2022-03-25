@@ -16,6 +16,7 @@ class ShipmentQrDetailsViewController: UIViewController {
     @IBOutlet weak var createdAt: UILabel!
     @IBOutlet weak var ShipmentStatus: UILabel!
     @IBOutlet weak var retailBtn: UIButton!
+    @IBOutlet weak var infoBtn: UIButton!
     
     var shipmentDetails: ShipmentResponse!
     var retailedShipmentDetails: RetailsShipmentResponse!
@@ -44,6 +45,12 @@ class ShipmentQrDetailsViewController: UIViewController {
     
     fileprivate func setupRetailedShipment() {
         retailBtn.isHidden = true
+        
+        shipmentQuantity.text = String(describing: retailedShipmentDetails.quantity)
+        shipmentBatchNumber.text = String(describing: retailedShipmentDetails.retailShipmentNumber)
+        ShipmentStatus.text = retailedShipmentDetails.status
+        createdAt.text = retailedShipmentDetails.createdAt
+        
         let shipmentID = retailedShipmentDetails.id
         
         let data = shipmentID.data(using: .ascii, allowLossyConversion: false)
@@ -64,6 +71,12 @@ class ShipmentQrDetailsViewController: UIViewController {
         } else {
             setupFullShipment()
         }
+        
+//        if shipmentDetails.status == "sold" {
+//            infoBtn.isHidden = false
+//        } else {
+//            infoBtn.isHidden = true
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +85,17 @@ class ShipmentQrDetailsViewController: UIViewController {
 //        schedule(sec: 5)
 
     }
+    
+    @IBAction func infoClicked(_ sender: Any) {
+    
+        if shipmentDetails.currentHolder != UserDefaults.standard.hasID {
+            self.shipmentQrDetailsPresnter.getAgent(agentID: shipmentDetails.currentHolder!)
+        } else {
+            showMessage(title: "Shipment may be new or somthing", body: "", type: .info, icon: .default)
+        }
+    }
+    
+    
     
     //MARK:- Schedule func to call timerDidFire
     private func schedule(sec: Double) {
@@ -132,6 +156,15 @@ class ShipmentQrDetailsViewController: UIViewController {
 }
 
 extension ShipmentQrDetailsViewController: ShipmentQrDetailsDelegate {
+   
+    func didRecivedAgentData(_ agentData: GetUserResponse) {
+        let shipmentMoreDetails = MoreShipmentDetailsViewController.instantiate()
+        shipmentMoreDetails.userData = agentData
+        shipmentMoreDetails.shipmentDetails = shipmentDetails
+        
+        navigationController?.pushViewController(shipmentMoreDetails, animated: true)
+    }
+    
     func startLoading() {
         ProgressHUD.animationType = .lineScaling
         ProgressHUD.show()

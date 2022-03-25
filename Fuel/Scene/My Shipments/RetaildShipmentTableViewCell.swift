@@ -17,7 +17,9 @@ class RetaildShipmentTableViewCell: UITableViewCell {
     @IBOutlet weak var createdAt: UILabel!
   
     func setupUI(with shipmentData: RetailsShipmentResponse) {
-        self.status.text = shipmentData.shipmentID
+        self.quantity.text = "\(shipmentData.quantity)"
+        self.batchNumber.text = "\(shipmentData.retailShipmentNumber)"
+        self.status.text = shipmentData.status
         self.createdAt.text = shipmentData.createdAt
     }
 }

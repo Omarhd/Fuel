@@ -374,7 +374,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="i8l-FU-maJ">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="81"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Agent Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNN-p5-MK5">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Farmer Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNN-p5-MK5">
                                                         <rect key="frame" x="0.0" y="0.0" width="182" height="40.5"/>
                                                         <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
                                                         <nil key="textColor"/>
@@ -648,19 +648,37 @@
                                     </connections>
                                 </button>
                             </barButtonItem>
+                            <barButtonItem title=" " style="plain" id="Oao-f9-r10">
+                                <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="bpk-Pe-LXz">
+                                    <rect key="frame" x="196.5" y="5" width="54.5" height="34.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="infoIcon.png">
+                                        <attributedString key="attributedTitle">
+                                            <fragment content=" "/>
+                                        </attributedString>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="infoClicked:" destination="I9B-ME-0fR" eventType="touchUpInside" id="9TQ-8G-AIT"/>
+                                        <action selector="infoClicked:" destination="gqM-7u-KHC" eventType="touchUpInside" id="OtT-wv-bBx"/>
+                                    </connections>
+                                </button>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="ShipmentStatus" destination="PlA-TP-hfM" id="qlE-9L-EMW"/>
                         <outlet property="createdAt" destination="tCB-T2-7b5" id="ecm-fQ-J6L"/>
+                        <outlet property="infoBtn" destination="bpk-Pe-LXz" id="r9d-ai-Hki"/>
                         <outlet property="qrCodeImageView" destination="uhr-f5-gcE" id="4dn-0I-7hg"/>
                         <outlet property="retailBtn" destination="2wi-gf-leK" id="xKf-V9-0uv"/>
                         <outlet property="shipmentBatchNumber" destination="f8r-Ab-0bK" id="B3I-sH-Mb2"/>
                         <outlet property="shipmentQuantity" destination="m5W-nh-T5c" id="tjo-VH-KOk"/>
                         <segue destination="cko-rX-uya" kind="show" id="nD2-m8-p8U"/>
+                        <segue destination="E92-95-o3b" kind="show" id="sAL-Uo-h7U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AP-CC-szF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="I9B-ME-0fR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="6088" y="-248"/>
         </scene>
@@ -1051,10 +1069,109 @@
             </objects>
             <point key="canvasLocation" x="4228" y="-944"/>
         </scene>
+        <!--Shipment Holder-->
+        <scene sceneID="8hN-zS-7lI">
+            <objects>
+                <viewController storyboardIdentifier="MoreShipmentDetailsViewController" id="E92-95-o3b" customClass="MoreShipmentDetailsViewController" customModule="Fuel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n1x-ME-UsI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ysT-PJ-K5f">
+                                <rect key="frame" x="20" y="160" width="374" height="200"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="gAC-h2-SoQ">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LcL-GG-LN8">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="48.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="National ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2V-ys-j72">
+                                                <rect key="frame" x="0.0" y="50.5" width="120" height="48.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSC-a5-qVu">
+                                                <rect key="frame" x="0.0" y="101" width="120" height="48.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M6a-RK-MVs">
+                                                <rect key="frame" x="0.0" y="151.5" width="120" height="48.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="E4u-nS-GvO"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="dda-x8-SgR">
+                                        <rect key="frame" x="130" y="0.0" width="244" height="200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdH-78-0GM">
+                                                <rect key="frame" x="0.0" y="0.0" width="244" height="48.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IO-VK-1BQ">
+                                                <rect key="frame" x="0.0" y="50.5" width="244" height="48.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iis-CV-RfY">
+                                                <rect key="frame" x="0.0" y="101" width="244" height="48.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrM-nC-Azi">
+                                                <rect key="frame" x="0.0" y="151.5" width="244" height="48.5"/>
+                                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="IlT-Tt-IZ9"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bzZ-CK-SD4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ysT-PJ-K5f" firstAttribute="leading" secondItem="bzZ-CK-SD4" secondAttribute="leading" constant="20" id="4jl-mI-1yY"/>
+                            <constraint firstItem="bzZ-CK-SD4" firstAttribute="trailing" secondItem="ysT-PJ-K5f" secondAttribute="trailing" constant="20" id="MgN-bT-UmS"/>
+                            <constraint firstItem="ysT-PJ-K5f" firstAttribute="top" secondItem="bzZ-CK-SD4" secondAttribute="top" constant="20" id="N4v-Me-Th1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Shipment Holder" id="ZHn-bA-cbe"/>
+                    <connections>
+                        <outlet property="nameLbl" destination="AdH-78-0GM" id="nDU-cS-cQU"/>
+                        <outlet property="nationalIDLbl" destination="7IO-VK-1BQ" id="Rtj-8l-sNu"/>
+                        <outlet property="phoneLbl" destination="CrM-nC-Azi" id="wIb-DN-Mc7"/>
+                        <outlet property="typeLbl" destination="Iis-CV-RfY" id="Dul-68-jwj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTO-pa-CzK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6087" y="-951"/>
+        </scene>
     </scenes>
     <resources>
         <image name="divide.circle" catalog="system" width="128" height="121"/>
         <image name="fuelpump.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="infoIcon.png" width="33" height="33"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="power.circle" catalog="system" width="128" height="121"/>

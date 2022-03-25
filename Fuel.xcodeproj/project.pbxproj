@@ -22,6 +22,7 @@
 		4C6A559827CFE48600EC36E7 /* ShipmentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6A559727CFE48600EC36E7 /* ShipmentModel.swift */; };
 		4C6B66CD27D38F4C00E23343 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B66CC27D38F4C00E23343 /* URL.swift */; };
 		4C6B66CF27D4D90100E23343 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6B66CE27D4D90000E23343 /* SettingsTableViewController.swift */; };
+		4C8C14BA27E9CC3E00AF4652 /* MoreShipmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8C14B927E9CC3E00AF4652 /* MoreShipmentDetailsViewController.swift */; };
 		4CC20FCE27CFAB8B00DE15DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC20FCD27CFAB8B00DE15DB /* AppDelegate.swift */; };
 		4CC20FD027CFAB8B00DE15DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC20FCF27CFAB8B00DE15DB /* SceneDelegate.swift */; };
 		4CC20FD527CFAB8B00DE15DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC20FD327CFAB8B00DE15DB /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 		4C6A559727CFE48600EC36E7 /* ShipmentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShipmentModel.swift; sourceTree = "<group>"; };
 		4C6B66CC27D38F4C00E23343 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		4C6B66CE27D4D90000E23343 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		4C8C14B927E9CC3E00AF4652 /* MoreShipmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreShipmentDetailsViewController.swift; sourceTree = "<group>"; };
 		4CC20FCA27CFAB8B00DE15DB /* Fuel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fuel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC20FCD27CFAB8B00DE15DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CC20FCF27CFAB8B00DE15DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -223,6 +225,14 @@
 				4C6B66CE27D4D90000E23343 /* SettingsTableViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		4C8C14B827E9CC1700AF4652 /* More Shipment Details */ = {
+			isa = PBXGroup;
+			children = (
+				4C8C14B927E9CC3E00AF4652 /* MoreShipmentDetailsViewController.swift */,
+			);
+			path = "More Shipment Details";
 			sourceTree = "<group>";
 		};
 		4CC20FC127CFAB8A00DE15DB = {
@@ -374,6 +384,7 @@
 		4CC2102F27CFB18900DE15DB /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				4C8C14B827E9CC1700AF4652 /* More Shipment Details */,
 				4C28492127DF4F6000407429 /* Retail Shipments */,
 				4C28488D27DDFF7F00407429 /* My Shipments */,
 				4C139AFD27DB694900B6B94A /* ShipmentDetails */,
@@ -668,6 +679,7 @@
 				4C6B66CD27D38F4C00E23343 /* URL.swift in Sources */,
 				4CC2101027CFB03B00DE15DB /* String+Extensions.swift in Sources */,
 				4CC2102927CFB0B800DE15DB /* APIError.swift in Sources */,
+				4C8C14BA27E9CC3E00AF4652 /* MoreShipmentDetailsViewController.swift in Sources */,
 				4CC2100927CFAFFA00DE15DB /* AppManager.swift in Sources */,
 				4CC2103927CFB68400DE15DB /* ScanerViewController.swift in Sources */,
 				4C28489127DDFF9300407429 /* ShipmentTableViewCell.swift in Sources */,
