@@ -1042,8 +1042,8 @@
                                     <constraint firstAttribute="height" constant="50" id="ea1-3n-w9k"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="All"/>
                                     <segment title="Retailed"/>
+                                    <segment title="All"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>

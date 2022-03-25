@@ -18,7 +18,8 @@ enum ServicesFeed {
     case updateUser
     case deleteUser(String)
     case getAllUsers
-    case getOperations  
+    case getOperations
+    case retailShipment
 }
 
 extension ServicesFeed: Endpoint {
@@ -40,6 +41,7 @@ extension ServicesFeed: Endpoint {
         case .deleteUser(let userID): return "/users/user/\(userID)"
         case .getAllUsers: return "/users/users"
         case .getOperations: return "/operation/operations"
+        case .retailShipment: return "/retailShipments/retailShipment"
         }
     }
 }

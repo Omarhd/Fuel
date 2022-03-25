@@ -21,5 +21,10 @@ class RetaildShipmentTableViewCell: UITableViewCell {
         self.batchNumber.text = "\(shipmentData.retailShipmentNumber)"
         self.status.text = shipmentData.status
         self.createdAt.text = shipmentData.createdAt
+        
+        if shipmentData.status == "sold" {
+            self.status.backgroundColor = .darkGray
+            self.status.textColor = .white
+        }
     }
 }

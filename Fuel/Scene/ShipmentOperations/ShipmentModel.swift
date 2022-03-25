@@ -119,6 +119,19 @@ struct RetailsShipmentResponse: Codable {
     }
 }
 
+// MARK: - ReShipmentRequest
+struct ReShipmentRequest: Codable {
+    let shipmentID, agentID: String
+    let quantity: Int
+
+    enum CodingKeys: String, CodingKey {
+        case shipmentID = "shipment_id"
+        case agentID = "agent_id"
+        case quantity
+    }
+}
+
+
 
 // MARK: - GetUserResponse
 struct GetUserResponse: Codable {

@@ -93,6 +93,24 @@ class APiServicesClient: APIClient {
         }, completion: completion)
     }
     
+    func retailShipment(shimentID: String,
+                        agentID: String,
+                        qt: Int,
+                        completion: @escaping (Result<RetailsShipmentResponse, DataLayerError<ErrorModel>>) -> Void) {
+               
+        let token = UserDefaults.standard.hasToken
+        let params = ReShipmentRequest(shipmentID: shimentID, agentID: agentID, quantity: qt)
+
+        guard let request = ServicesFeed.retailShipment.postRequest(parameters: params, headers: [HTTPHeader.contentType("application/json"),
+                                                                                                     HTTPHeader.Authorization(token)]) else { return }
+        print("REquest \(request)")
+        
+        fetchHandler(with: request, decode: { (json) -> RetailsShipmentResponse? in
+            guard let result = json as? RetailsShipmentResponse else {return nil}
+            return result
+        }, completion: completion)
+    }
+    
 //    func createUser(firstNAme: String,
 //                    lastName: String,
 //                    email: String,

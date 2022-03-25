@@ -40,7 +40,8 @@ class RetailShipmentViewController: UIViewController {
         
         let params: [String: Any] = ["shipment_id": shipmentDetails.id, "agent_id": UserDefaults.standard.hasID, "quantity": Int(qt)!]
         
-        self.retailsShipmentPresenter.retailingShipment(params: params)
+        self.retailsShipmentPresenter.retailingShipments(shipmentID: shipmentDetails.id, qt: Int(qt)!)
+//        self.retailsShipmentPresenter.retailingShipment(params: params)
     }
 }
 
@@ -56,7 +57,13 @@ extension RetailShipmentViewController: RetailShipmentDelegate {
     
     func didRecevidShimentResponse(_ shipmentRespons: RetailsShipmentResponse) {
         showMessage(title: "Done", body: "Retailing Success", type: .success, icon: .default)
-        navigationController?.popToRootViewController(animated: true)
+        
+        let shipmentDetails = ShipmentQrDetailsViewController.instantiate()
+        shipmentDetails.retailedShipmentDetails = shipmentRespons
+        shipmentDetails.returent = true
+        
+        navigationController?.pushViewController(shipmentDetails, animated: true)
+
     }
     
     func didReceivedError(_ message: String) {
